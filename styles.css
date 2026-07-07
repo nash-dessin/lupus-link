@@ -1,0 +1,225 @@
+:root{
+
+    /* Colors */
+
+    --background:#FDF8F2;
+    --foreground:#2C1810;
+
+    --primary:#C2522D;
+    --secondary:#62A594;
+    --secondary-light:#8CC4B7;
+
+    --accent:#E8A225;
+
+    --card:#FFFCF7;
+    --muted:#F0E8DC;
+
+    --border:#E6DDD0;
+
+    /* Fonts */
+
+    --display:"Fraunces", serif;
+    --body:"Plus Jakarta Sans", sans-serif;
+
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:var(--body);
+    background:var(--background);
+    color:var(--foreground);
+    line-height:1.7;
+
+}
+
+img{
+
+    max-width:100%;
+    display:block;
+
+}
+
+a{
+
+    text-decoration:none;
+    color:inherit;
+
+}
+
+ul{
+
+    list-style:none;
+
+}
+
+section{
+
+    padding:100px 10%;
+
+}
+
+    /*Typograppgy section */
+
+h1,h2,h3{
+
+    font-family:var(--display);
+
+}
+
+h1{
+
+    font-size:4.5rem;
+
+}
+
+h2{
+
+    font-size:3.5rem;
+
+}
+
+p{
+
+    max-width:65ch;
+
+}
+
+.section-heading{
+
+    margin-bottom:60px;
+
+}
+
+.card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    padding:2rem;
+
+}
+
+    /*layouts sections*/
+.hero{
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:4rem;
+
+}
+
+.statistics,
+.values,
+.stories-grid,
+.resources-grid,
+.events-grid{
+
+    display:grid;
+    gap:2rem;
+
+}
+
+.statistics{
+
+    grid-template-columns:repeat(3,1fr);
+
+}
+
+.values{
+
+    grid-template-columns:repeat(3,1fr);
+
+}
+
+.stories-grid{
+
+    grid-template-columns:repeat(3,1fr);
+
+}
+
+.resources-grid{
+
+    grid-template-columns:repeat(3,1fr);
+
+}
+
+.about-grid{
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2rem;
+
+}
+
+    /* buttons */
+button{
+
+    cursor:pointer;
+
+    border:none;
+
+    border-radius:999px;
+
+    padding:1rem 2rem;
+
+    font-family:inherit;
+
+}
+
+button:first-child{
+
+    background:var(--primary);
+    color:white;
+
+}
+
+.secondary{
+
+    background:transparent;
+
+    border:1px solid var(--border);
+
+}
+
+    /* mission page */
+
+.mission{
+
+    background:#62A594;
+    color:white;
+
+}
+
+.value-card{
+
+    background:rgba(255,255,255,.06);
+
+}
+
+    /* cards */
+.stat-card,
+.story-card,
+.resource-card,
+.event-card,
+.symptoms-card,
+.living-card,
+.value-card{
+
+    border-radius:24px;
+    padding:2rem;
+
+}
