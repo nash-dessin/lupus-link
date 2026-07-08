@@ -18,75 +18,51 @@
 
 <body>
 
-<!-- NAV SECTION -->   
-        <nav class="navbar">
+ <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="logo">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        LupusLink
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About Lupus</a></li>
+        <li><a href="#mission">Our Mission</a></li>
+        <li><a href="#stories">Stories</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#join" class="btn btn-primary btn-small">Join Community</a></li>
+      </ul>
+    </div>
+  </nav>
 
-            <div class="container">
-                <a href="#" class="logo">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                        </svg>
-                        LupusLink
-                    </a>
-                    <button class="hamburger" id="hamburger" aria-label="Open menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-
-            <ul class="nav-links">
-
-                <li><a href="#about">About Lupus</a></li>
-                <li><a href="#mission">Our Mission</a></li>
-                <li><a href="#stories">Stories</a></li>
-                <li><a href="#resources">Resources</a></li>
-                <li><a href="#events">Events</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#join" class="btn btn-primary btn-small">Join Community</a></li>
-            </ul>
-        </nav>
-    <main>
-
-<!-- HERO SECTION -->   
-
-        <section class="hero" id="join">
-
-            <div class="hero-bg">
-                <div class="container">
-                    <div class="hero-grid">
-                        <div class="hero-content reveal">
-
-                <span class="eyebrow">
-                    Kenya's Lupus Community
-                </span>
-
-                <h1>
-                    You are more than your
-                    <span>diagnosis.</span>
-                </h1>
-
-                <p>
-                    A community and resource hub for people living with lupus, their families, and caregivers — because no one should navigate this journey alone.
-                </p>
-
-                <div class="hero-actions">
-
-                     <a href="#" class="btn btn-primary">Join Community</a>
-                    <a href="#about" class="btn btn-outline">Learn More</a>
-                </div>
-
-                <div class="hero-stats">
-
-                    <div>2400+ members</div>
-                    <div>Free to join</div>
-                    <div>Kenya-wide</div>
-                 </div>
-
-            <div class="hero-image">
-                    <img src="WOC.png" alt="Did you know? Most lupus patients are women.">
-            </div>
-        </section>
-
+  <!-- Hero -->
+  <section class="hero" id="join">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content reveal">
+          <h1>You are more than your diagnosis.</h1>
+          <p class="tagline">A community and resource hub for people living with lupus, their families, and caregivers.</p>
+          <p>Connect with others who understand your journey. Find trusted resources, local support, and a space where your whole self is seen—beyond the symptoms.</p>
+          <div class="hero-actions">
+            <a href="#" class="btn btn-primary">Join Community</a>
+            <a href="#about" class="btn btn-outline">Learn More</a>
+          </div>
+        </div>
+        <div class="hero-image reveal">
+          <img src="images/hero-illustration.png" alt="Illustration of diverse people supporting each other">
+        </div>
+      </div>
+      
 <!-- ABOUT SECTION -->   
 
         <section id="about" class="about">
