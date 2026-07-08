@@ -24,20 +24,20 @@
                 </button>
             </div>
 
-            <div class="profile-card">
+            <a href="profile.html" class="profile-card">
                 <div class="avatar">NH</div>
                 <div>
                     <h3>Nasha Hinga</h3>
                     <p>Diagnosed 2022</p>
                 </div>
-            </div>
+            </a>
 
             <nav class="sidebar-nav">
-                <a href="#" class="active">Dashboard</a>
-                <a href="#">Medications</a>
-                <a href="#">Appointments</a>
-                <a href="#">Resources</a>
-                <a href="#">Support</a>
+                <a href="#dashboard" class="active" data-nav="dashboard">Dashboard</a>
+                <a href="#medications" data-nav="medications">Medications</a>
+                <a href="#appointments" data-nav="appointments">Appointments</a>
+                <a href="#resources" data-nav="resources">Resources</a>
+                <a href="#support" data-nav="support">Support</a>
             </nav>
 
             <div class="sidebar-footer">
@@ -77,37 +77,23 @@
 
             <section class="dashboard-grid">
                 <div class="dashboard-column">
-                    <article class="panel medication-panel">
+                    <article class="panel medication-panel" id="medications">
                         <div class="panel-heading">
                             <div>
                                 <p class="section-label">Medications</p>
                                 <h2>Today’s plan</h2>
                             </div>
-                            <span class="pill-badge">2/3 complete</span>
+                            <span class="pill-badge" id="medCount">2/3 complete</span>
                         </div>
                         <div class="progress-shell" aria-label="Medication progress">
-                            <div class="progress-bar" style="width: 66%"></div>
+                            <div class="progress-bar" id="medProgress" style="width: 66%"></div>
                         </div>
-                        <ul class="check-list">
-                            <li class="complete">
-                                <label>
-                                    <input type="checkbox" checked>
-                                    <span>Hydroxychloroquine · 8:00 AM</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label>
-                                    <input type="checkbox">
-                                    <span>Vitamin D · 12:30 PM</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label>
-                                    <input type="checkbox">
-                                    <span>Prednisone · 8:00 PM</span>
-                                </label>
-                            </li>
-                        </ul>
+                        <ul class="check-list" id="medList"></ul>
+                        <form id="medForm" class="inline-form">
+                            <input type="text" id="medName" placeholder="New prescription" required>
+                            <input type="text" id="medTime" placeholder="Time" required>
+                            <button type="submit" class="btn btn-primary btn-small">Add</button>
+                        </form>
                     </article>
 
                     <article class="panel symptom-panel">
@@ -136,34 +122,23 @@
                         </div>
                     </article>
 
-                    <article class="panel appointments-panel">
+                    <article class="panel appointments-panel" id="appointments">
                         <div class="panel-heading">
                             <div>
                                 <p class="section-label">Upcoming appointments</p>
                                 <h2>Next visits</h2>
                             </div>
                         </div>
-                        <ul class="appointment-list">
-                            <li>
-                                <strong>Dr. Akinyi</strong>
-                                <span>Rheumatology · Thu, 4:30 PM</span>
-                                <small>Parklands Medical Centre</small>
-                            </li>
-                            <li>
-                                <strong>Dr. Mwangi</strong>
-                                <span>Dermatology · Fri, 10:00 AM</span>
-                                <small>Mercy Hospital</small>
-                            </li>
-                            <li>
-                                <strong>Nurse Mugo</strong>
-                                <span>Lab review · Mon, 2:15 PM</span>
-                                <small>Westlands Clinic</small>
-                            </li>
-                        </ul>
+                        <ul class="appointment-list" id="appointmentList"></ul>
+                        <form id="apptForm" class="inline-form">
+                            <input type="text" id="apptName" placeholder="Doctor / check-up" required>
+                            <input type="text" id="apptTime" placeholder="Date & time" required>
+                            <button type="submit" class="btn btn-primary btn-small">Schedule</button>
+                        </form>
                     </article>
                 </div>
 
-                <aside class="dashboard-sidebar">
+                <aside class="dashboard-sidebar" id="dashboard">
                     <article class="panel mood-panel">
                         <div class="panel-heading">
                             <div>
@@ -198,7 +173,7 @@
                         </div>
                     </article>
 
-                    <article class="panel rest-panel">
+                    <article class="panel rest-panel" id="resources">
                         <div class="panel-heading">
                             <div>
                                 <p class="section-label">Rest reminder</p>
@@ -229,6 +204,18 @@
         toggle.addEventListener('click', () => {
             const isOpen = sidebar.classList.toggle('open');
             toggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        const navLinks = document.querySelectorAll('.sidebar-nav a');
+        navLinks.forEach((link) => {
+            link.addEventListener('click', () => {
+                navLinks.forEach((item) => item.classList.remove('active'));
+                link.classList.add('active');
+                if (window.innerWidth <= 640) {
+                    sidebar.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
         });
 
         const moodForm = document.getElementById('moodForm');
@@ -288,6 +275,116 @@
         });
 
         renderWater();
+
+        const medList = document.getElementById('medList');
+        const medForm = document.getElementById('medForm');
+        const medProgress = document.getElementById('medProgress');
+        const medCount = document.getElementById('medCount');
+        let medications = JSON.parse(localStorage.getItem('lupuslink-medications') || '[]');
+
+        function renderMedications() {
+            medList.innerHTML = '';
+            if (!medications.length) {
+                medList.innerHTML = '<li class="empty-state">No prescriptions added yet.</li>';
+            } else {
+                medications.forEach((item, index) => {
+                    const li = document.createElement('li');
+                    li.className = item.done ? 'complete' : '';
+                    li.innerHTML = `
+                        <label>
+                            <input type="checkbox" data-index="${index}" ${item.done ? 'checked' : ''}>
+                            <span>${item.name} · ${item.time}</span>
+                        </label>
+                        <button type="button" class="remove-btn" data-remove="${index}">×</button>
+                    `;
+                    medList.appendChild(li);
+                });
+            }
+            const completed = medications.filter((item) => item.done).length;
+            const percent = medications.length ? Math.round((completed / medications.length) * 100) : 0;
+            medProgress.style.width = `${percent}%`;
+            medCount.textContent = `${completed}/${medications.length} complete`;
+            localStorage.setItem('lupuslink-medications', JSON.stringify(medications));
+        }
+
+        medForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const name = document.getElementById('medName').value.trim();
+            const time = document.getElementById('medTime').value.trim();
+            if (!name || !time) return;
+            medications.push({ name, time, done: false });
+            this.reset();
+            renderMedications();
+        });
+
+        medList.addEventListener('change', (event) => {
+            if (event.target.matches('input[type="checkbox"]')) {
+                const index = Number(event.target.dataset.index);
+                medications[index].done = event.target.checked;
+                renderMedications();
+            }
+        });
+
+        medList.addEventListener('click', (event) => {
+            if (event.target.matches('button[data-remove]')) {
+                const index = Number(event.target.dataset.remove);
+                medications.splice(index, 1);
+                renderMedications();
+            }
+        });
+
+        const appointmentList = document.getElementById('appointmentList');
+        const apptForm = document.getElementById('apptForm');
+        let appointments = JSON.parse(localStorage.getItem('lupuslink-appointments') || '[]');
+
+        function renderAppointments() {
+            appointmentList.innerHTML = '';
+            if (!appointments.length) {
+                appointmentList.innerHTML = '<li class="empty-state">No appointments scheduled yet.</li>';
+            } else {
+                appointments.forEach((item, index) => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        <strong>${item.name}</strong>
+                        <span>${item.time}</span>
+                        <small>Tap to update</small>
+                        <button type="button" class="remove-btn" data-appt-remove="${index}">×</button>
+                    `;
+                    li.addEventListener('click', () => {
+                        const next = prompt('Update appointment', item.name + ' · ' + item.time);
+                        if (next) {
+                            const [name, time] = next.split('·');
+                            appointments[index] = { name: name.trim(), time: time ? time.trim() : item.time };
+                            localStorage.setItem('lupuslink-appointments', JSON.stringify(appointments));
+                            renderAppointments();
+                        }
+                    });
+                    appointmentList.appendChild(li);
+                });
+            }
+            localStorage.setItem('lupuslink-appointments', JSON.stringify(appointments));
+        }
+
+        apptForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const name = document.getElementById('apptName').value.trim();
+            const time = document.getElementById('apptTime').value.trim();
+            if (!name || !time) return;
+            appointments.push({ name, time });
+            this.reset();
+            renderAppointments();
+        });
+
+        appointmentList.addEventListener('click', (event) => {
+            if (event.target.matches('button[data-appt-remove]')) {
+                const index = Number(event.target.dataset.apptRemove);
+                appointments.splice(index, 1);
+                renderAppointments();
+            }
+        });
+
+        renderMedications();
+        renderAppointments();
     </script>
 </body>
 </html>
