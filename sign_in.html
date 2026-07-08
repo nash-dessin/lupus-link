@@ -1,13 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-        <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LupusLink | Sign In or Sign Up</title>
+    <title>LupusLink | Sign In</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body class="auth-page">
     <div class="auth-shell">
         <div class="auth-card">
@@ -18,22 +19,21 @@
                     </svg>
                     LupusLink
                 </a>
-                <h1>Welcome back to your community.</h1>
-                <p>Sign in to reconnect with support, updates, and trusted resources, or create an account to join the LupusLink circle.</p>
+                <h1>Welcome back to your care circle.</h1>
+                <p>Sign in to review your daily plan, check your next appointment, and stay connected with your support network.</p>
                 <ul class="auth-benefits">
-                    <li>Private peer support and stories</li>
-                    <li>Local events and wellness resources</li>
-                    <li>Caregiver and patient guidance</li>
+                    <li>Medication and symptom tracking</li>
+                    <li>Appointment reminders</li>
+                    <li>Daily support tuned to your routine</li>
                 </ul>
             </div>
 
             <div class="auth-form-panel">
-                <div class="auth-toggle" role="tablist" aria-label="Authentication options">
-                    <button class="auth-tab active" type="button" data-target="signin" role="tab" aria-selected="true">Sign in</button>
-                    <button class="auth-tab" type="button" data-target="signup" role="tab" aria-selected="false">Sign up</button>
+                <div class="auth-header">
+                    <h2>Sign in</h2>
+                    <p>Access your personal dashboard.</p>
                 </div>
-
-                <form id="signin" class="auth-form active" novalidate>
+                <form class="auth-form" id="signin-form">
                     <label>
                         Email address
                         <input type="email" placeholder="you@example.com" required>
@@ -49,39 +49,18 @@
                         </label>
                         <a href="#" class="inline-link">Forgot password?</a>
                     </div>
+                    <button type="submit" class="btn btn-primary auth-submit">Sign in</button>
+                </form>
+                <a href="sign_up.html" class="btn btn-outline auth-switch">Need an account?</a>
+            </div>
         </div>
     </div>
 
     <script>
-        const tabs = document.querySelectorAll('.auth-tab');
-        const forms = document.querySelectorAll('.auth-form');
-        const switchLinks = document.querySelectorAll('.switch-link');
-
-        function showPanel(targetId) {
-            forms.forEach((form) => {
-                const isActive = form.id === targetId;
-                form.classList.toggle('active', isActive);
-                form.hidden = !isActive;
-            });
-
-            tabs.forEach((tab) => {
-                const isActive = tab.dataset.target === targetId;
-                tab.classList.toggle('active', isActive);
-                tab.setAttribute('aria-selected', String(isActive));
-            });
-        }
-
-        tabs.forEach((tab) => {
-            tab.addEventListener('click', () => showPanel(tab.dataset.target));
-        });
-
-        switchLinks.forEach((link) => {
-            link.addEventListener('click', (event) => {
-                event.preventDefault();
-                showPanel(link.dataset.target);
-            });
+        document.getElementById('signin-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            window.location.href = 'dashboard.html';
         });
     </script>
 </body>
-
 </html>
