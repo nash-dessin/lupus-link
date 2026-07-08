@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LupusLink | Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="profile-page">
+    <div class="profile-shell">
+        <header class="profile-header">
+            <div>
+                <p class="section-label">Your profile</p>
+                <h1>Manage your account details</h1>
+                <p class="profile-intro">A complete profile helps LupusLink recognize you, keep your records consistent, and support your care more effectively.</p>
+            </div>
+            <a href="dashboard.html" class="btn btn-outline">Back to dashboard</a>
+        </header>
+
+        <section class="profile-grid">
+            <article class="profile-card-panel">
+                <div class="profile-photo-box">
+                    <div class="profile-photo">NH</div>
+                    <div>
+                        <h2>Nasha Hinga</h2>
+                        <p>Patient • Diagnosed 2022</p>
+                    </div>
+                </div>
+
+                <form class="profile-form">
+                    <label>
+                        Photo
+                        <input type="text" placeholder="Upload or link a photo">
+                    </label>
+                    <label>
+                        Name
+                        <input type="text" value="Nasha Hinga">
+                    </label>
+                    <label>
+                        Email
+                        <input type="email" value="nasha@example.com">
+                    </label>
+                    <label>
+                        City / County
+                        <input type="text" value="Nairobi County">
+                    </label>
+                    <label>
+                        Emergency Contact
+                        <input type="text" value="+254 700 000 000">
+                    </label>
+
+                    <div class="profile-actions">
+                        <button type="submit" class="btn btn-primary">Save profile</button>
+                        <button type="button" class="btn btn-outline">Logout</button>
+                    </div>
+                </form>
+            </article>
+
+            <aside class="profile-info-panel">
+                <article class="panel profile-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="section-label">Notification settings</p>
+                            <h2>Stay informed</h2>
+                        </div>
+                    </div>
+                    <div class="toggle-list">
+                        <label><input type="checkbox" checked> Medication reminders</label>
+                        <label><input type="checkbox" checked> Appointment alerts</label>
+                        <label><input type="checkbox"> Weekly wellness tips</label>
+                        <label><input type="checkbox" checked> Community updates</label>
+                    </div>
+                </article>
+
+                <article class="panel profile-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="section-label">Why your profile matters</p>
+                            <h2>Helping the system recognize you</h2>
+                        </div>
+                    </div>
+                    <p>Your profile helps LupusLink identify your preferences, connect your health records to the right care plan, and ensure reminders, appointments, and support reach the right person at the right time.</p>
+                </article>
+            </aside>
+        </section>
+    </div>
+</body>
+</html>
