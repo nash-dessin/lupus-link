@@ -1,7 +1,7 @@
     :root {
       --bg: #FDF8F2;
       --fg: #2C1810;
-      --primary: #C2522D;
+      --primary: #c2522d;
       --secondary: #5C7A5A;
       --secondary-dark: #3E4F3C;
       --accent: #E8A225;
@@ -196,6 +196,52 @@
       align-items: center;
     }
 
+    /* Hero image: framed photo variant — more circular */
+    .hero-image img {
+      width: 420px;
+      max-width: 80%;
+      aspect-ratio: 1 / 1;
+      display: block;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 20px 40px rgba(44, 24, 16, 0.12);
+      border: 8px solid rgba(255, 255, 255, 0.9);
+      background-color: #fff;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 900px) {
+      .hero-image img {
+        width: 320px;
+        max-width: 70%;
+        border-radius: 50%;
+      }
+    }
+
+    /* Alternative: set the PNG as a background for the hero
+       To use this approach, add the class `bg-image` to the `.hero` element.
+       Example: <section class="hero bg-image" id="join"> */
+    .hero.bg-image .hero-bg {
+      background-image:
+        radial-gradient(at 80% 10%, rgba(232, 162, 37, 0.15) 0px, transparent 50%),
+        radial-gradient(at 20% 80%, rgba(194, 82, 45, 0.12) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(92, 122, 90, 0.08) 0px, transparent 50%),
+        linear-gradient(135deg, rgba(0,0,0,0.28), rgba(0,0,0,0.28)),
+        url('WOC.png');
+      background-size: cover;
+      background-position: center;
+      filter: saturate(0.95) contrast(0.95);
+      mix-blend-mode: normal;
+    }
+
+    /* When using the background-image hero, make the text more readable */
+    .hero.bg-image .hero-content h1,
+    .hero.bg-image .hero-content p,
+    .hero.bg-image .hero-content .tagline {
+      color: #fff;
+      text-shadow: 0 6px 20px rgba(0,0,0,0.45);
+    }
+
     .hero-content h1 {
       font-size: clamp(2.5rem, 5vw, 4rem);
       font-weight: 600;
@@ -260,11 +306,66 @@
     }
 
     /* About */
+    .about {
+      padding: 80px 0;
+    }
+
+    /* Highlighted small label above the heading */
+    .about .container > span {
+      display: inline-block;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: rgba(240,232,220,0.9);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.6px;
+      margin-bottom: 12px;
+    }
+
+    /* Reusable label pill (use for hero eyebrow and other small labels) */
+    .label-pill {
+      display: inline-block;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: rgba(240,232,220,0.95);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.6px;
+      margin-bottom: 12px;
+    }
+
+    /* Hero eyebrow and small meta */
+    .hero .hero-eyebrow {
+      margin-bottom: 10px;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta span {
+      background: rgba(255,255,255,0.92);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--fg);
+      border: 1px solid rgba(0,0,0,0.04);
+      box-shadow: 0 6px 18px rgba(44,24,16,0.04);
+    }
     .about-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      margin-bottom: 48px;
+      margin: 28px 0 36px;
     }
 
     .stat-block {
@@ -305,13 +406,43 @@
 
     .about-text h3 {
       font-size: 1.6rem;
-      margin-bottom: 16px;
+      margin: 18px 0 12px;
       color: var(--fg);
     }
 
     .about-text p {
-      margin-bottom: 16px;
-      opacity: 0.9;
+      margin-bottom: 18px;
+      opacity: 0.95;
+      max-width: 760px;
+    }
+
+    /* Ensure headings in the about-content match */
+    .about-content h3 {
+      font-size: 1.6rem;
+      margin: 18px 0 12px;
+      color: var(--fg);
+    }
+
+    /* Increase spacing for paragraphs inside about columns */
+    .about-content p {
+      margin-bottom: 22px;
+      line-height: 1.7;
+      opacity: 0.95;
+    }
+
+    /* Style the small explore link in living-with to appear lower and stand out */
+    .living-with .btn-small {
+      display: inline-block;
+      margin-top: 26px;
+      color: #A34424;
+      font-weight: 800;
+      background: transparent;
+      border: none;
+      padding: 6px 10px;
+    }
+
+    .living-with .btn-small:hover {
+      text-decoration: underline;
     }
 
     .symptoms-checklist {
