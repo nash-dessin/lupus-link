@@ -1225,6 +1225,12 @@
       background: rgba(255,255,255,0.12);
       padding: 14px;
       border-radius: 16px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .profile-card:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
     }
 
     .avatar {
@@ -1406,6 +1412,10 @@
       border: 1px solid var(--muted);
       border-radius: 12px;
       padding: 10px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
     }
 
     .check-list label {
@@ -1414,6 +1424,7 @@
       gap: 10px;
       cursor: pointer;
       font-size: 0.95rem;
+      flex: 1;
     }
 
     .check-list input {
@@ -1460,6 +1471,8 @@
       display: flex;
       flex-direction: column;
       gap: 4px;
+      align-items: flex-start;
+      cursor: pointer;
     }
 
     .appointment-list small,
@@ -1553,6 +1566,158 @@
     .rest-panel {
       background: linear-gradient(135deg, rgba(194,82,45,0.1) 0%, rgba(232,162,37,0.14) 100%);
       border: 1px solid rgba(194,82,45,0.14);
+    }
+
+    .profile-page {
+      background: linear-gradient(135deg, #f9efe8 0%, #f4e8de 100%);
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .profile-shell {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .profile-header {
+      background: var(--card);
+      border-radius: 24px;
+      padding: 24px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 10px 24px rgba(44,24,16,0.06);
+    }
+
+    .profile-intro {
+      max-width: 640px;
+      color: var(--secondary-dark);
+      margin-top: 8px;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+    }
+
+    .profile-card-panel,
+    .profile-info-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .profile-card-panel {
+      background: var(--card);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 10px 24px rgba(44,24,16,0.06);
+    }
+
+    .profile-photo-box {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .profile-photo {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .profile-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .profile-form label {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--fg);
+    }
+
+    .profile-form input {
+      border: 1px solid var(--muted);
+      border-radius: 12px;
+      padding: 10px 12px;
+      font: inherit;
+    }
+
+    .profile-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .toggle-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .toggle-list label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--fg);
+    }
+
+    .profile-panel p {
+      color: var(--secondary-dark);
+      line-height: 1.7;
+    }
+
+    .inline-form {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .inline-form input {
+      flex: 1;
+      min-width: 140px;
+      border: 1px solid var(--muted);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font: inherit;
+    }
+
+    .remove-btn {
+      border: none;
+      background: rgba(194,82,45,0.12);
+      color: var(--primary);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .empty-state {
+      justify-content: center;
+      color: var(--secondary-dark);
+      font-size: 0.92rem;
+      text-align: center;
     }
 
     /* Animations disabled */
@@ -1667,6 +1832,15 @@
 
       .overview-row {
         grid-template-columns: 1fr;
+      }
+
+      .inline-form {
+        flex-direction: column;
+      }
+
+      .inline-form .btn,
+      .inline-form input {
+        width: 100%;
       }
 
       .mobile-nav-toggle {
