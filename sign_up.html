@@ -64,6 +64,7 @@
     <script>
         document.getElementById('signup-form').addEventListener('submit', function (event) {
             event.preventDefault();
+            localStorage.setItem('lupuslink-auth', 'true');
             window.location.href = 'dashboard.html';
         });
     </script>
