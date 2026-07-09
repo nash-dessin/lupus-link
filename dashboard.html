@@ -50,7 +50,7 @@
             <header class="dashboard-header">
                 <div>
                     <p class="section-label">Your wellness dashboard</p>
-                    <h1 id="greeting">Good morning, Nasha!</h1>
+                    <h1 id="greeting">Good morning!</h1>
                     <p id="todayDate" class="header-date"></p>
                 </div>
                 <button class="btn btn-primary">Add note</button>
@@ -119,6 +119,31 @@
                                 <div class="severity-bar"><span class="high"></span></div>
                                 <small>↗</small>
                             </div>
+                        </div>
+                        <div class="symptom-log">
+                            <div id="symptomLogSummary" class="symptom-log-summary">
+                                <div class="symptom-log-header">
+                                    <p>Today’s symptom</p>
+                                    <span id="severityDisplay" class="severity-indicator">No severity</span>
+                                </div>
+                                <p id="symptomLogText">Record today’s main symptom and select a severity level.</p>
+                            </div>
+                            <form id="symptomForm" class="symptom-form">
+                                <textarea id="symptomText" rows="3" placeholder="Describe today’s symptom..." required></textarea>
+                                <div class="symptom-controls">
+                                    <div class="severity-picker">
+                                        <label for="severityLevel">Severity</label>
+                                        <div class="severity-tags" role="group" aria-label="Severity level">
+                                            <button type="button" class="severity-tag" data-severity="low">Low</button>
+                                            <button type="button" class="severity-tag" data-severity="mild">Mild</button>
+                                            <button type="button" class="severity-tag" data-severity="moderate">Moderate</button>
+                                            <button type="button" class="severity-tag" data-severity="high">High</button>
+                                        </div>
+                                        <input type="hidden" id="severityLevel" name="severity" value="" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-small">Save log</button>
+                                </div>
+                            </form>
                         </div>
                     </article>
 
@@ -391,8 +416,55 @@
             }
         });
 
+        const symptomForm = document.getElementById('symptomForm');
+        const symptomText = document.getElementById('symptomText');
+        const severityLevel = document.getElementById('severityLevel');
+        const severityDisplay = document.getElementById('severityDisplay');
+        const symptomLogText = document.getElementById('symptomLogText');
+        const severityTags = document.querySelectorAll('.severity-tag');
+        let symptomLog = JSON.parse(localStorage.getItem('lupuslink-symptom-log') || 'null') || { text: '', severity: '' };
+
+        function updateSeverityTagUI(selected) {
+            severityTags.forEach((tag) => {
+                const severity = tag.dataset.severity;
+                tag.classList.toggle('active', severity === selected);
+            });
+            severityLevel.value = selected;
+            severityDisplay.textContent = selected ? `${selected.charAt(0).toUpperCase() + selected.slice(1)} severity` : 'No severity';
+            severityDisplay.className = `severity-indicator ${selected || ''}`;
+        }
+
+        function renderSymptomLog() {
+            if (symptomLog.text && symptomLog.severity) {
+                symptomLogText.textContent = symptomLog.text;
+                updateSeverityTagUI(symptomLog.severity);
+            } else {
+                symptomLogText.textContent = 'Record today’s main symptom and select a severity level.';
+                updateSeverityTagUI('');
+            }
+            symptomText.value = symptomLog.text || '';
+        }
+
+        severityTags.forEach((tag) => {
+            tag.addEventListener('click', () => {
+                const selectedSeverity = tag.dataset.severity;
+                updateSeverityTagUI(selectedSeverity);
+            });
+        });
+
+        symptomForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const text = symptomText.value.trim();
+            const severity = severityLevel.value;
+            if (!text || !severity) return;
+            symptomLog = { text, severity };
+            localStorage.setItem('lupuslink-symptom-log', JSON.stringify(symptomLog));
+            renderSymptomLog();
+        });
+
         renderMedications();
         renderAppointments();
+        renderSymptomLog();
     </script>
 </body>
 </html>
