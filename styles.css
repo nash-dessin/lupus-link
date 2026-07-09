@@ -652,6 +652,103 @@
       opacity: 0.7;
     }
 
+    /* Resource Library */
+    .resource-library-page {
+      background: linear-gradient(135deg, #f8efe8 0%, #f2e7dc 100%);
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .resource-library-shell {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .resource-library-header {
+      background: var(--card);
+      border-radius: 24px;
+      padding: 24px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 10px 24px rgba(44,24,16,0.06);
+    }
+
+    .resource-library-intro {
+      max-width: 720px;
+      margin-top: 8px;
+      color: var(--secondary-dark);
+    }
+
+    .resource-library-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .resource-library-layout {
+      display: grid;
+      grid-template-columns: 1.4fr 0.6fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .resource-main {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .resource-library-cta {
+      background: rgba(194,82,45,0.08);
+      border: 1px solid rgba(194,82,45,0.16);
+      border-radius: 16px;
+      padding: 16px 18px;
+      color: var(--secondary-dark);
+      font-weight: 600;
+    }
+
+    .resource-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .resource-panel {
+      background: var(--card);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 10px 24px rgba(44,24,16,0.06);
+    }
+
+    .member-tools-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .member-tool-section h4 {
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .member-tool-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-left: 18px;
+      color: var(--secondary-dark);
+    }
+
+    .member-tool-list li {
+      list-style: disc;
+    }
+
     /* Resources */
     .resources-grid {
       display: grid;
@@ -1568,6 +1665,87 @@
       border: 1px solid rgba(194,82,45,0.14);
     }
 
+    .forum-page {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f8efe8 0%, #f2e7dc 100%);
+      padding: 24px;
+    }
+
+    .forum-shell {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .forum-header {
+      background: var(--card);
+      border-radius: 24px;
+      padding: 24px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 10px 24px rgba(44,24,16,0.06);
+    }
+
+    .forum-intro {
+      max-width: 680px;
+      margin-top: 8px;
+      color: var(--secondary-dark);
+    }
+
+    .forum-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+    }
+
+    .forum-card {
+      background: var(--card);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 10px 24px rgba(44,24,16,0.06);
+    }
+
+    .forum-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .forum-form label {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--fg);
+    }
+
+    .forum-form input,
+    .forum-form select,
+    .forum-form textarea {
+      border: 1px solid var(--muted);
+      border-radius: 12px;
+      padding: 10px 12px;
+      font: inherit;
+    }
+
+    .discussion-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .discussion-list li {
+      padding: 12px 14px;
+      background: rgba(194,82,45,0.08);
+      border-radius: 12px;
+      color: var(--fg);
+      font-weight: 600;
+    }
+
     .profile-page {
       background: linear-gradient(135deg, #f9efe8 0%, #f4e8de 100%);
       min-height: 100vh;
@@ -1832,6 +2010,18 @@
 
       .overview-row {
         grid-template-columns: 1fr;
+      }
+
+      .forum-grid,
+      .profile-grid,
+      .resource-library-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .forum-header,
+      .resource-library-header {
+        flex-direction: column;
+        align-items: flex-start;
       }
 
       .inline-form {
