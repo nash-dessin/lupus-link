@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LupusLink | Community Forum</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="forum-page">
+    <div class="forum-shell">
+        <header class="forum-header">
+            <div>
+                <p class="section-label">Community forum</p>
+                <h1>Share, learn, and support one another</h1>
+                <p class="forum-intro">A safe space for lupus patients, caregivers, and allies to connect around lived experiences and practical guidance.</p>
+            </div>
+            <a href="index.html" id="backHomeLink" class="btn btn-outline">Back home</a>
+        </header>
+
+        <section class="forum-grid">
+            <article class="forum-card create-post-card">
+                <div class="panel-heading">
+                    <div>
+                        <p class="section-label">Create Post</p>
+                        <h2>Start a conversation</h2>
+                    </div>
+                </div>
+                <form class="forum-form">
+                    <label>
+                        Title
+                        <input type="text" placeholder="What would you like to share?">
+                    </label>
+                    <label>
+                        Topic
+                        <select>
+                            <option>General support</option>
+                            <option>Flare tips</option>
+                            <option>Medication questions</option>
+                            <option>Appointments</option>
+                        </select>
+                    </label>
+                    <label>
+                        Message
+                        <textarea rows="5" placeholder="Write your post here..."></textarea>
+                    </label>
+                    <button type="submit" class="btn btn-primary">Post</button>
+                </form>
+            </article>
+
+            <aside class="forum-card discussions-card">
+                <div class="panel-heading">
+                    <div>
+                        <p class="section-label">Recent Discussions</p>
+                        <h2>Popular threads</h2>
+                    </div>
+                </div>
+                <ul class="discussion-list">
+                    <li>Tips for flare days</li>
+                    <li>First diagnosis</li>
+                    <li>Looking for support</li>
+                    <li>Exercise recommendations</li>
+                </ul>
+            </aside>
+        </section>
+    </div>
+
+    <script>
+        const backHomeLink = document.getElementById('backHomeLink');
+        const isLoggedIn = localStorage.getItem('lupuslink-auth') === 'true';
+
+        if (backHomeLink) {
+            backHomeLink.href = isLoggedIn ? 'dashboard.html' : 'index.html';
+        }
+    </script>
+</body>
+</html>
