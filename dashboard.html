@@ -42,7 +42,7 @@
 
             <div class="sidebar-footer">
                 <p>Need extra support today?</p>
-                <a href="sign_in.html" class="btn btn-outline btn-small">Sign out</a>
+                <a href="sign_in.html" id="signOutLink" class="btn btn-outline btn-small">Sign out</a>
             </div>
         </aside>
 
@@ -191,6 +191,14 @@
     </div>
 
     <script>
+        const signOutLink = document.getElementById('signOutLink');
+
+        if (signOutLink) {
+            signOutLink.addEventListener('click', function () {
+                localStorage.removeItem('lupuslink-auth');
+            });
+        }
+
         const greeting = document.getElementById('greeting');
         const todayDate = document.getElementById('todayDate');
         const now = new Date();
