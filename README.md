@@ -26,9 +26,14 @@ LupusLink is a supportive web platform designed to help people living with lupus
 - Dashboard - Logged in user platform
 - Profile - Profile page
 - Resources - Verified resources
-- Community forum - Community posts 
+- Community forum - Community posts
 
-  
+## How to Run this Project
+- Download or clone the repository.
+- Open the project folder in Visual Studio Code.
+- Open index.html.
+- Run the project using Live Server or open the file in your web browser.
+
 ## Future Improvements
 - Add real user authentication and a backend database
 - Connect the dashboard to live health data and reminders
