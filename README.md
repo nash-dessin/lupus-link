@@ -18,14 +18,13 @@ LupusLink is a supportive web platform designed to help people living with lupus
 ## Technologies Used
 - HTML5 for page structure
 - CSS3 for styling, layout, and responsive design
-- JavaScript for interactivity and local data handling
 - LocalStorage for saving dashboard preferences such as mood and water intake
 
 ## Web Pages
 - Home - Main landing page
 - Login - New user registration page
-- 
 
+  
 ## Future Improvements
 - Add real user authentication and a backend database
 - Connect the dashboard to live health data and reminders
