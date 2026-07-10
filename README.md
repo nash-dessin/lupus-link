@@ -18,13 +18,21 @@ LupusLink is a supportive web platform designed to help people living with lupus
 ## Technologies Used
 - HTML5 for page structure
 - CSS3 for styling, layout, and responsive design
-- JavaScript for interactivity and local data handling
 - LocalStorage for saving dashboard preferences such as mood and water intake
 
 ## Web Pages
 - Home - Main landing page
 - Login - New user registration page
-- 
+- Dashboard - Logged in user platform
+- Profile - Profile page
+- Resources - Verified resources
+- Community forum - Community posts
+
+## How to Run this Project
+- Download or clone the repository.
+- Open the project folder in Visual Studio Code.
+- Open index.html.
+- Run the project using Live Server or open the file in your web browser.
 
 ## Future Improvements
 - Add real user authentication and a backend database
