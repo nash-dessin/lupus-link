@@ -23,6 +23,10 @@ LupusLink is a supportive web platform designed to help people living with lupus
 ## Web Pages
 - Home - Main landing page
 - Login - New user registration page
+- Dashboard - Logged in user platform
+- Profile - Profile page
+- Resources - Verified resources
+- Community forum - Community posts 
 
   
 ## Future Improvements
